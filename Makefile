@@ -1,20 +1,26 @@
+DOC_BASE=visceral-fat-via-basal-insulin-v2
+EPUB=$(DOC_BASE).epub
+PDF=$(DOC_BASE).pdf
+HTML=$(DOC_BASE).html
+FB2=$(DOC_BASE).fb2
 
-EPUB=visceral-fat-via-basal-insulin.epub visceral-fat-via-basal-insulin-v2.epub
-PDF=visceral-fat-via-basal-insulin.pdf visceral-fat-via-basal-insulin-v2.pdf
-HTML=visceral-fat-via-basal-insulin.html visceral-fat-via-basal-insulin-v2.html
 
+all: $(EPUB) $(PDF) $(FB2)
 
-all: $(EPUB) $(HTML) $(PDF)
+html: $(HTML)
 
 %.pdf: %.md
-	pandoc -f markdown -t pdf --pdf-engine=xelatex -V mainfont="Liberation Serif" $< -o $@
+	pandoc -f markdown_mmd -t pdf --pdf-engine=xelatex -V mainfont="Liberation Serif" $< -o $@
 
 %.epub: %.md
-	pandoc -f markdown -t epub $< -o $@
+	pandoc -f markdown_mmd -t epub $< -o $@
+
+%.fb2: %.md
+	pandoc -f markdown_mmd -t fb2 $< -o $@
 
 %.html: %.md
-	pandoc -f markdown -t html $< -o $@
+	pandoc -f markdown_mmd -t html $< -o $@
 
 .PHONY: clean
 clean:
-	rm -v *.epub *.pdf
+	rm -v $(EPUB) $(PDF) $(HTML)
