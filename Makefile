@@ -1,8 +1,8 @@
 DOC_BASE=visceral-fat-via-basal-insulin-v2
-EPUB=$(DOC_BASE).epub
-PDF=$(DOC_BASE).pdf
-HTML=$(DOC_BASE).html
-FB2=$(DOC_BASE).fb2
+EPUB=$(DOC_BASE).epub self-massage.epub
+PDF=$(DOC_BASE).pdf self-massage.pdf
+HTML=$(DOC_BASE).html self-massage.html
+FB2=$(DOC_BASE).fb2 self-massage.fb2
 
 
 all: $(EPUB) $(PDF) $(FB2)
